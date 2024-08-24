@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bloom_1 = require("./bloom");
 const utils_1 = require("./utils");
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoYXNfZ3Vlc3QiOmZhbHNlLCJ0eXBlIjoiQUNDRVNTIiwiaXNzIjoiYmx1bSIsInN1YiI6IjIxN2IwNjA1LTZmZGYtNDg3NS1hZmE1LWRlODcyOTMxYjdkYyIsImV4cCI6MTcyNDQyMzUzNiwiaWF0IjoxNzI0NDE5OTM2fQ.Mh1aHsFc_EGX1sekZ6I54W7dFbnkZaOD9YMg2og-sBU";
+    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoYXNfZ3Vlc3QiOmZhbHNlLCJ0eXBlIjoiQUNDRVNTIiwiaXNzIjoiYmx1bSIsInN1YiI6IjIxN2IwNjA1LTZmZGYtNDg3NS1hZmE1LWRlODcyOTMxYjdkYyIsImV4cCI6MTcyNDUwNzA2NiwiaWF0IjoxNzI0NTAzNDY2fQ.eksWNckQTcj9HIPXTn8n3tE9en7-HwgcyKn0FvM82oA";
     const minReward = 160;
     const maxReward = 190;
     try {
@@ -31,9 +31,10 @@ const utils_1 = require("./utils");
             let { gameId } = yield (0, bloom_1.startGame)(authToken);
             if (!gameId) {
                 console.log("Update token");
-                return;
+                let timeout1 = (5);
+                yield (0, utils_1.sleep)(timeout1);
             }
-            let timeout = (0, utils_1.generateRandomNumber)(30, 37);
+            let timeout = (0, utils_1.generateRandomNumber)(30, 35);
             yield (0, utils_1.sleep)(timeout);
             let claimStatus = yield (0, bloom_1.endGame)(gameId, points, authToken);
             if (!claimStatus || claimStatus !== "OK") {

@@ -2,7 +2,7 @@ import {balance, endGame, startGame} from "./bloom";
 import {generateRandomNumber, sleep} from "./utils";
 
 (async () => {
-    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoYXNfZ3Vlc3QiOmZhbHNlLCJ0eXBlIjoiQUNDRVNTIiwiaXNzIjoiYmx1bSIsInN1YiI6IjIxN2IwNjA1LTZmZGYtNDg3NS1hZmE1LWRlODcyOTMxYjdkYyIsImV4cCI6MTcyNDQyMzUzNiwiaWF0IjoxNzI0NDE5OTM2fQ.Mh1aHsFc_EGX1sekZ6I54W7dFbnkZaOD9YMg2og-sBU";
+    const authToken = "";
 
 
     const minReward = 160;
@@ -28,10 +28,11 @@ import {generateRandomNumber, sleep} from "./utils";
             let {gameId} = await startGame(authToken);
             if(!gameId) {
                 console.log("Update token");
-                return;
+                let timeout1 = (5)
+                await sleep(timeout1);
             }
 
-            let timeout = generateRandomNumber(30, 37);
+            let timeout = generateRandomNumber(30, 35);
             await sleep(timeout);
 
             let claimStatus = await endGame(gameId, points, authToken);
